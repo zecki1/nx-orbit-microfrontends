@@ -50,3 +50,6 @@ Thumbs.db
 /.lighthouseci
 /.angular
 /bundle-analysis
+
+.vercel
+.env*
