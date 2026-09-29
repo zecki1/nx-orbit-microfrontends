@@ -1,0 +1,61 @@
+<header class="topo">
+  <div class="container topo-inner">
+    <span class="marca">
+      <span class="marca-ponto" aria-hidden="true"></span>
+      {{ titulo() }}
+    </span>
+    <span class="badge">Semanas 8, 9 e 11</span>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero" aria-labelledby="titulo-principal">
+    <h1 id="titulo-principal">Monorepo com Module Federation</h1>
+    <p class="subtitulo">
+      Um host que carrega remotes independentes em runtime. Cada equipe publica no seu
+      ritmo; o shell mantém router, layout e design system em um lugar só.
+    </p>
+    <p class="aviso" role="note">
+      <strong>Escopo em aberto.</strong> Esta página publica o estado do workspace. O
+      código dos remotes entra nas semanas 8, 9 e 11 do roadmap.
+    </p>
+  </section>
+
+  <section aria-labelledby="titulo-remotos">
+    <h2 id="titulo-remotos">Projetos do monorepo</h2>
+    <ul class="lista-remotos" role="list">
+      @for (remoto of remotos(); track remoto.nome) {
+        <li class="cartao" role="listitem">
+          <div class="cartao-topo">
+            <h3 class="cartao-nome">{{ remoto.nome }}</h3>
+            <span class="etiqueta" [class.etiqueta--ativa]="remoto.estado === 'em construcao'">
+              {{ remoto.estado }}
+            </span>
+          </div>
+          <p class="cartao-texto">{{ remoto.papel }}</p>
+          <code class="rota">{{ remoto.rota }}</code>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section aria-labelledby="titulo-comandos">
+    <h2 id="titulo-comandos">Comandos do dia a dia</h2>
+    <dl class="comandos">
+      @for (item of comandos(); track item.comando) {
+        <div class="comando">
+          <dt><code>{{ item.comando }}</code></dt>
+          <dd>{{ item.efeito }}</dd>
+        </div>
+      }
+    </dl>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="container">
+    <p>Angular 22 · Nx · Module Federation · Supabase · Vercel</p>
+  </div>
+</footer>
+
+<router-outlet />
